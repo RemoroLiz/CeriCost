@@ -1,121 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pemesanan Kostum Cosplay</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Penjualan Emas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
     <div class="container">
-      <h2 class="mt-5 mb-4 text-center">Pemesanan Kostum Cosplay</h2>
-      <form id="costumeForm">
+        <h1>Kalkulator Penjualan Emas</h1>
         <div class="form-group">
-          <label for="nama">Nama:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="nama"
-            name="nama"
-            required
-          />
+            <label for="harga">Harga Emas per Gram (IDR):</label>
+            <input type="number" id="harga" placeholder="Masukkan harga per gram">
         </div>
         <div class="form-group">
-          <label for="alamat">Alamat:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="alamat"
-            name="alamat"
-            required
-          />
+            <label for="berat">Berat Emas (gram):</label>
+            <input type="number" id="berat" placeholder="Masukkan berat emas">
         </div>
-
-        <div class="form-group">
-          <label for="asal">Asal Sekolah / Kampus:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="asal"
-            name="asal"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="whatsapp">No WhatsApp Teman / Keluarga:</label>
-          <input
-            type="number"
-            class="form-control"
-            id="whatsapp"
-            name="whatsapp"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="username">Username IG / Tiktok:</label>
-          <input
-            type="text"
-            class="form-control"
-            id="username"
-            name="username"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="costume">Costume:</label>
-          <select class="form-control" id="costume" name="costume" required>
-            <option value="">Pilih Kostum</option>
-            <option value="KOSTUM A">KOSTUM A</option>
-            <option value="KOSTUM B">KOSTUM B</option>
-            <option value="KOSTUM C">KOSTUM C</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="tanggal">Tanggal Sewa:</label>
-          <input
-            type="date"
-            class="form-control"
-            id="tanggal"
-            name="tanggal"
-            required
-          />
-        </div>
-
-        <!-- Form input fields for other data -->
-        <div class="form-group">
-          <label for="foto">Foto:</label>
-          <input
-            type="file"
-            class="form-control-file"
-            id="foto"
-            name="foto"
-            accept="image/*"
-            required
-          />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+        <button onclick="hitungPenjualan()">Hitung</button>
+        <div class="result" id="result"></div>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script
-      async
-      defer
-      src="https://apis.google.com/js/api.js"
-      onload="this.onload=function(){};handleClientLoad()"
-      onreadystatechange="if (this.readyState === 'complete') this.onload()"
-    ></script>
-    <script src="api/api.obf.js"></script>
-  </body>
+    <script>
+        function hitungPenjualan() {
+            const harga = document.getElementById('harga').value;
+            const berat = document.getElementById('berat').value;
+            const totalPenjualan = harga * berat;
+            document.getElementById('result').textContent = `Total Penjualan: IDR ${totalPenjualan.toLocaleString()}`;
+        }
+    </script>
+</body>
 </html>
